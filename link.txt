@@ -1,0 +1,5 @@
+http://kasey.fr/ATTiny-capteur-universel-en-I2C.html
+http://www.allmyit.com.au/programming-avr-parallel-port-ltp
+http://poivron-robotique.fr/I2C-sous-linux.html
+http://pobot.org/
+
