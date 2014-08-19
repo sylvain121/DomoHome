@@ -1,0 +1,235 @@
+EESchema Schematic File Version 2  date mar. 19 août 2014 13:06:07 CEST
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:attiny
+LIBS:perso
+EELAYER 25  0
+EELAYER END
+$Descr A4 11700 8267
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "19 aug 2014"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	6350 4200 7100 4200
+Wire Wire Line
+	7100 4200 7100 4650
+Connection ~ 7950 5400
+Wire Wire Line
+	7950 5150 7950 5400
+Wire Wire Line
+	7950 3350 7950 1450
+Connection ~ 6700 1900
+Wire Wire Line
+	10250 2600 10550 2600
+Wire Wire Line
+	10550 2600 10550 1700
+Wire Wire Line
+	10550 1700 7550 1700
+Wire Wire Line
+	7550 1700 7550 1900
+Wire Wire Line
+	7550 1900 1800 1900
+Connection ~ 8500 2100
+Wire Wire Line
+	9100 2100 8500 2100
+Wire Wire Line
+	8500 3200 8500 3350
+Wire Wire Line
+	7250 4450 7250 4000
+Wire Wire Line
+	8500 3750 8500 4250
+Wire Wire Line
+	6350 3800 6700 3800
+Wire Wire Line
+	6700 3800 6700 1900
+Wire Wire Line
+	1800 1900 1800 1650
+Wire Wire Line
+	1800 1650 1100 1650
+Wire Wire Line
+	1950 1450 1100 1450
+Wire Wire Line
+	2350 4450 2350 1750
+Wire Wire Line
+	2350 4450 3200 4450
+Wire Wire Line
+	3200 4250 2750 4250
+Wire Wire Line
+	2750 4250 2750 1450
+Wire Wire Line
+	1100 1550 1950 1550
+Wire Wire Line
+	1950 1550 1950 1750
+Wire Wire Line
+	1950 1750 2350 1750
+Wire Wire Line
+	1100 1750 1700 1750
+Wire Wire Line
+	1700 1750 1700 2000
+Wire Wire Line
+	6800 2000 6800 3400
+Wire Wire Line
+	6800 3400 6350 3400
+Wire Wire Line
+	8200 4450 7750 4450
+Wire Wire Line
+	3200 4450 3200 5400
+Wire Wire Line
+	8500 5400 8500 4650
+Wire Wire Line
+	2750 1450 8500 1450
+Wire Wire Line
+	8500 1450 8500 2700
+Connection ~ 7950 1450
+Wire Wire Line
+	3200 5400 9100 5400
+Wire Wire Line
+	9100 5400 9100 2200
+Connection ~ 8500 5400
+Wire Wire Line
+	1700 2000 7650 2000
+Wire Wire Line
+	7650 2000 7650 1800
+Wire Wire Line
+	7650 1800 10450 1800
+Wire Wire Line
+	10450 1800 10450 2500
+Wire Wire Line
+	10450 2500 10250 2500
+Connection ~ 6800 2000
+Wire Wire Line
+	7950 3750 7950 4650
+Wire Wire Line
+	7950 4650 7100 4650
+Wire Wire Line
+	7250 4000 6350 4000
+$Comp
+L ATTINY25-45-85/DIP-SO U?
+U 1 1 53F32DCE
+P 4750 3900
+F 0 " U?" H 4725 4525 60  0000 C CNN
+F 1 "ATTINY25-45-85/DIP-SO" H 4750 4675 60  0000 C CNN
+	1    4750 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 508EA623
+P 7950 4900
+F 0 "R3" V 8030 4900 50  0000 C CNN
+F 1 "220k" V 7950 4900 50  0000 C CNN
+	1    7950 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCP9808 U3
+U 1 1 508122B2
+P 9300 2650
+F 0 "U3" H 9700 3400 60  0000 C CNN
+F 1 "MCP9808" H 9650 2500 60  0000 C CNN
+	1    9300 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L DIODE D2
+U 1 1 50811C3A
+P 7950 3550
+F 0 "D2" H 7950 3650 40  0000 C CNN
+F 1 "PHOTO DIODE" H 7950 3450 40  0000 C CNN
+	1    7950 3550
+	0    1    1    0   
+$EndComp
+$Comp
+L R R2
+U 1 1 50811B84
+P 8500 2950
+F 0 "R2" V 8580 2950 50  0000 C CNN
+F 1 "33" V 8400 2950 50  0000 C CNN
+	1    8500 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 50811B5B
+P 7500 4450
+F 0 "R1" V 7580 4450 50  0000 C CNN
+F 1 "200" V 7400 4450 50  0000 C CNN
+	1    7500 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L BC237 Q1
+U 1 1 50811A92
+P 8400 4450
+F 0 "Q1" H 8600 4350 50  0000 C CNN
+F 1 "BC237BG" H 8650 4600 50  0000 C CNN
+F 2 "TO92-EBC" H 8590 4450 30  0001 C CNN
+	1    8400 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D1
+U 1 1 50811A62
+P 8500 3550
+F 0 "D1" H 8500 3650 50  0000 C CNN
+F 1 "TSUS5400" H 8500 3450 50  0000 C CNN
+	1    8500 3550
+	0    1    1    0   
+$EndComp
+Text HLabel 1650 1400 0    60   Input ~ 0
++12V
+$Comp
+L CONN_4 P1
+U 1 1 508112A4
+P 750 1600
+F 0 "P1" V 700 1600 50  0000 C CNN
+F 1 "CONN_4" V 800 1600 50  0000 C CNN
+	1    750  1600
+	-1   0    0    1   
+$EndComp
+$Comp
+L 7805 U2
+U 1 1 5081116B
+P 2350 1500
+F 0 "U2" H 2500 1304 60  0000 C CNN
+F 1 "7805" H 2350 1700 60  0000 C CNN
+	1    2350 1500
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
