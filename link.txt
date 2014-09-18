@@ -3,3 +3,8 @@ http://www.allmyit.com.au/programming-avr-parallel-port-ltp
 http://poivron-robotique.fr/I2C-sous-linux.html
 http://pobot.org/
 
+
+sudo apt-get install avr-libc avrdude binutils-avr gcc-avr
+
+tuto ATtiny : http://blog.cicatrice.eu/40
+
