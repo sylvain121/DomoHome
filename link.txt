@@ -8,3 +8,6 @@ sudo apt-get install avr-libc avrdude binutils-avr gcc-avr
 
 tuto ATtiny : http://blog.cicatrice.eu/40
 
+
+IR infos : 
+http://www.pcbheaven.com/userpages/Reverse_Engineering_Fidji_Air_Condition_IR_Protocol/index.php?topic=worklog&p=0
