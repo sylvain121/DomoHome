@@ -18,20 +18,7 @@ void setup()
 }
 
 void loop() {
-	if (Serial.available() > 0) {
-		switch(Serial.read()) {
-			case 1:
-			irsend.sendRaw(off, 227);
-			Serial.println("send off command");
-			break;
-			case 2:
-			irsend.sendRaw(on_cold_22c, 227);
-			Serial.println("send cold command");
-			break;
-			case 3:
-			irsend.sendRaw(on_hot_24c, 227);
-			Serial.println("send hot command");
-			break;
-		}
-	}
+	delay(2000);
+	irsend.sendRaw(on_hot_24c, 227,38);
+	Serial.println(F("send hot command"));
 }
