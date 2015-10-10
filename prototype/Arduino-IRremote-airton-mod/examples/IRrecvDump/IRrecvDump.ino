@@ -49,9 +49,9 @@ void dump(decode_results *results) {
     Serial.print(results->panasonicAddress,HEX);
     Serial.print(" Value: ");
   }
-  else if (results->decode_type == LG) {
-     Serial.print("Decoded LG: ");
-  }
+  //else if (results->decode_type == LG) {
+  //   Serial.print("Decoded LG: ");
+  //}
   else if (results->decode_type == JVC) {
      Serial.print("Decoded JVC: ");
   }
