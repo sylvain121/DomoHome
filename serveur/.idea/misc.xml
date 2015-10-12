@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CppTools.Loader" reportImplicitCastToBool="false" reportNameReferencedOnce="false" warnedAboutFileOutOfSourceRoot="true" version="3" currentProject="$PROJECT_DIR$/node_modules/nedb/node_modules/binary-search-tree/Makefile" compilerSelect="AUTO" />
   <component name="IdProvider" IDEtalkID="1D227B5873792AE3C4FD1DFF521E23F1" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android API 14 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/out" />
@@ -55,4 +56,3 @@
     </states>
   </component>
 </project>
-

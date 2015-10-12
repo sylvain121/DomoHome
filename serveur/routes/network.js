@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var ping = require('../serveur/homeInterfaces/network/ping');
+var ping = require('./ping');
+var Network = require('../serveur/Network/Network');
+var network = new Network();
 
 /**
  * ping command like /network/ping/ipaddress ( V4 only )
@@ -23,7 +25,7 @@ router.get('/ping/:ip', function(req, res) {
  * @type {router|exports}
  */
 
-var wol = require('../serveur/homeInterfaces/network/wol');
+var wol = require('./wol');
 router.get('/wol/:mac', function(req, res) {
     var mac = req.params.mac;
     wol.doWol(mac, function(err, result){
@@ -34,6 +36,10 @@ router.get('/wol/:mac', function(req, res) {
             res.send(result);
         }
     });
+});
+
+router.get('/equipements', function(req, res){
+ network.getEquipements();
 });
 
 module.exports = router;
