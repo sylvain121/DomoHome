@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define CHECKSUM_BASE 0x15
+
 uint8_t lsb_first(uint8_t value)
 {
   uint8_t result=0;
@@ -20,10 +22,26 @@ uint8_t lsb_first(uint8_t value)
 
 }
 
+void get_bit(uint8_t value)
+{
+	for(int y = 0; y < 8; y++)
+		{
+		  if(value & 0x80)
+		  {
+		    printf("1");
+		  } else {
+		    printf("0");
+		  }
+
+		  value <<= 1;
+
+		}
+}
+
 void Airton(uint8_t power, uint8_t mode, uint8_t temperature, uint8_t flowControl)
 {
   uint8_t *raw = malloc(14 * sizeof(uint8_t));
-  raw[13] = 0x15 + power + mode +temperature + flowControl;  //checksum
+  raw[13] = lsb_first(0x15 + power + mode +temperature + flowControl);  //checksum
   // allocate raw
 
   raw[0] = 0xC4;
@@ -40,20 +58,9 @@ void Airton(uint8_t power, uint8_t mode, uint8_t temperature, uint8_t flowContro
   raw[11] = 0x00;
   raw[12] = 0x00;
 
-  for(int i = 0; i < 13 ; i++)
+  for(int i = 0; i <= 13 ; i++)
   {
-    for(int y = 0; y < 8; y++)
-    {
-      if(raw[i] && 1)
-      {
-        printf("1");
-      } else {
-        printf("0");
-      }
-
-      raw[i] << 1;
-
-    }
+    get_bit(raw[i]);
     printf(" ");
   }
 
@@ -66,9 +73,13 @@ void Airton(uint8_t power, uint8_t mode, uint8_t temperature, uint8_t flowContro
 int main ( int arc, char **argv ) {
 
 uint8_t power = 0x24;
-uint8_t mode = 7;
-uint8_t temperature = 1;
-uint8_t flowControl =56;
+uint8_t mode = 0x02;
+uint8_t temperature = 0x07;
+uint8_t flowControl =0x38;
+//11000101 => 0xC5
+//10100011 => 0xA3
+//printf("%#010x\n", lsb_first(0xC5));
+//get_bit(0xA3);
 
 Airton(power, mode, temperature, flowControl);
 
