@@ -72,6 +72,8 @@ public:
   IRsend() {}
   void sendNEC(unsigned long data, int nbits);
   void sendSony(unsigned long data, int nbits);
+  char lsb_first(char value);
+  void Airton(char power, char mode, char temperature, char flowControl);
   void sendRaw(unsigned int buf[], int len, int hz);
   void sendRC5(unsigned long data, int nbits);
   void sendRC6(unsigned long data, int nbits);

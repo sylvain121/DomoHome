@@ -43,11 +43,11 @@ ON_VENTIL_NaN_FAN_MAX_FLAP    		: 11000100 11010011 01100100 10000000 00000000 0
 
 
 frame  ==>>>
-1# address
-2# address
-3# address
-4# address
-5#
+1# address : 11000100
+2# address : 11010011
+3# address : 01100100
+4# address : 10000000
+5# 0x00
 6# ON ( 00100100 ) / OFF ( 00000100 ) LSB Fist
 7# MODE : 
 	COLD 	: 11000000
@@ -87,10 +87,10 @@ frame  ==>>>
 
 	LSB First
 
-10#
-11#
-12#
-13#
+10# 0x00
+11# 0x00
+12# 0x00
+13# 0x00
 14# checksum LSB fisrt
 
 

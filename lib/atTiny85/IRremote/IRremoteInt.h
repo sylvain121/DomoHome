@@ -12,7 +12,7 @@
 #ifndef IRremoteint_h
 #define IRremoteint_h
 
-#include <WProgram.h>
+#include <Arduino.h>
 
 #define CLKFUDGE 5      // fudge factor for clock interrupt overhead
 #define CLK 256      // max value for clock (timer 2)
@@ -69,6 +69,12 @@
 #define RC6_T1		444
 #define RC6_RPT_LENGTH	46000
 
+
+#define AIRTON_HDR_MARK 3000
+#define AIRTON_HDR_SPACE 1728
+#define AIRTON_ONE_MARK 1096
+#define AIRTON_ZERO_MARK 452
+
 #define TOLERANCE 25  // percent tolerance in measurements
 #define LTOL (1.0 - TOLERANCE/100.) 
 #define UTOL (1.0 + TOLERANCE/100.) 
@@ -98,7 +104,7 @@ typedef struct {
   uint8_t rcvstate;          // state machine
   uint8_t blinkflag;         // TRUE to enable blinking of pin 13 on IR processing
   unsigned int timer;     // state timer, counts 50uS ticks.
-  unsigned int rawbuf[RAWBUF]; // raw data
+  unsigned int rawbuf[76]; // raw data
   uint8_t rawlen;         // counter of entries in rawbuf
 } 
 irparams_t;
