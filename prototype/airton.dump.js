@@ -34,18 +34,49 @@ var global = [OFF, ON_HOT_24_C, ON_COLD22_C, ON_HOT_24_FAN_MAX_FLAP,ON_HOT_23_FA
 
 // INIT
 var TOLERENCE = 20;
+var header_up = [];
+var header_down = [];
+var down = [];
+var up = [];
 
 
 
-foreach(dump in global) {
-	var result = []
-	var name = dump.constructor.name;
-	for(var i=0;i < dump.lenght(); i + 2) {
-		if(i != 0 || i != 1) { // ignore header
-			
+global.forEach(function(dump){
+
+	for(var i=0;i < dump.length; i++) {
+		if( i == 0) {
+		header_up.push(dump[i]);
 		}
+		else if(i == 1) {
+		header_down.push(dump[i]);
+		}
+		else if(dump[i] < 1000) {
+			down.push(dump[i]);
+
+		}
+		else if(dump[i] > 1000) {
+			up.push(dump[i]);
+		}
+		
 	} 
+});
+
+
+console.log(moyenne(header_up));
+console.log(moyenne(header_down));
+console.log(moyenne(down));
+console.log(moyenne(up));
+
+function moyenne( tab) {
+var size = tab.length;
+var sum = 0;
+tab.forEach(function(value){
+			sum += value;
+});
+	return sum / size;
 }
+
+
 
 
 

@@ -22,10 +22,12 @@
 
 
 #define MSG_GET_TEMP 0x80
-#define MSG_SEND_IR	 0xFF
+#define MSG_SEND_IR  0xFF
 
 IRsend irsend;
-
+byte* floatPtr;
+float temp;
+unsigned int on_hot_24c[] = {2944, 1784, 416, 1132, 392, 1160, 412, 404, 424, 404, 420, 404, 420, 420, 420, 1128, 420, 1128, 396, 1160, 412, 408, 420, 404, 416, 436, 392, 412, 388};
 void setup(){
   TinyWireS.begin(I2C_SLAVE_ADDR);      // init I2C Slave mode
 }
@@ -33,10 +35,13 @@ void setup(){
 
 void loop(){
   char command = 0;
-  if (TinyWireS.available()){           // got I2C input!
+  //irsend.Airton(0x24, 0x02, 0x07,0x38);
+  irsend.sendRaw(on_hot_24c, 29,38);
+  delay(200);
+  /*if (TinyWireS.available())
+  {           // got I2C input!
     byte command = TinyWireS.receive();     // get the byte from master
-	switch(command) {
-      case MSG_SEND_IR:
+      if(command == MSG_SEND_IR ) 
       {
         char power = TinyWireS.receive();
         char mode =  TinyWireS.receive();
@@ -44,22 +49,30 @@ void loop(){
         char flowControl = TinyWireS.receive();
         irsend.Airton(power, mode, temperature,flowControl);
         TinyWireS.send(0xFF);
-      }
-      case MSG_GET_TEMP:
-      {
-        TinyWireS.send(getTemperature());
       } 
-  	}    
-  }
+      else if (command == MSG_GET_TEMP )
+      {
+        getTemperature();
+        floatPtr = (byte*) &temp;
+        TinyWireS.send( *floatPtr );  // send first byte
+        ++floatPtr;
+        TinyWireS.send( *floatPtr );  // the second
+        ++floatPtr;
+        TinyWireS.send( *floatPtr );  // third
+        ++floatPtr;
+        TinyWireS.send( *floatPtr );  // fourth and final byte
+      }
+       else 
+       {
+         TinyWireS.send(command);
+       }    
+  }*/
 }
 
-char getTemperature() {
+void getTemperature() {
 
-	/*int val = analogRead(LM35_SENSOR_PIN);
-	float mv = (val/1024.0)*5000;
-	byte cel = mv/10;
-	return cel; */	
-  return 1;
+	temp = analogRead(LM35_SENSOR_PIN);
+	temp = temp * 0.48828125;
 }
 
 
