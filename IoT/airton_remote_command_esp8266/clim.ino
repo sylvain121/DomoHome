@@ -68,7 +68,7 @@ void setup(void){
 	Serial.print("IP address: ");
 	Serial.println(WiFi.localIP());
 
-	if (mdns.begin("esp8266", WiFi.localIP())) {
+	if (mdns.begin("IoTModule", WiFi.localIP())) {
 		Serial.println("MDNS responder started");
 
 	}
