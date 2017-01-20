@@ -26,10 +26,17 @@ function thingDisconnectionHandler(ipV4Address) {
 
 function getModuleInfo(ipV4Address) {
   return new Promise((resolve, reject) => {
-    request("http://" + ipV4Address + "/getInfo",
+    request("http://" + ipV4Address + "/info",
       (err, response, body) {
         if(err) return reject(err);
-        return resolve(body);
+        var thing = {
+          ipV4Address: ipV4Address,
+          driver: {
+            name : body.driverName,
+            object: null
+          }
+        };
+        return resolve(thing);
       });
   });
 }

@@ -36,7 +36,7 @@ module.exports = class AirtonV1Driver {
       },
       off: function() {
         return new Promise((resolve, reject) => {
-          request(that.baseUrl + "/on", (err, response, body) => {
+          request(that.baseUrl + "/off", (err, response, body) => {
             if (err) return reject(err);
             that.power = false;
             return resolve({
@@ -54,7 +54,7 @@ module.exports = class AirtonV1Driver {
   get temperature() {
     var that = this;
     return new Promise((resolve, reject) => {
-      request(that.baseUrl + "/getTemperature", function(err, response, body) {
+      request(that.baseUrl + "/temperature", function(err, response, body) {
         if (err) return reject(err);
         return resolve({
           temperature: body
