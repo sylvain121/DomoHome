@@ -1,0 +1,8 @@
+{
+    "name": "maison",
+    "id": "maison",
+    "datas": [{
+        "id": "salon",
+        "name": "salon"
+    }]
+}
