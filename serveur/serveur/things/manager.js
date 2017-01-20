@@ -14,8 +14,6 @@ function newThingConnectionHandler(ipV4Address) {
     .catch(err => {
       console.err(err);
     });
-
-
 }
 
 

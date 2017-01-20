@@ -1,68 +1,66 @@
 var request = require('request')
 
 module.exports = class AirtonV1Driver {
-    constructor(ipaddress) {
-        this.ip = ipaddress;
-        this.baseUrl = "http://" + ipaddress;
-	    this.power = undefined;
-    }
+  constructor(ipaddress) {
+    this.ip = ipaddress;
+    this.baseUrl = "http://" + ipaddress;
+    this.power = undefined;
+  }
 
 
-	get types() {
-		return ["switch", "temperature"];
-	}
+  get types() {
+    return [{
+      type: "switch",
+      id: "clim"
+    }, {
+      type: "temperature",
+      id: "temperature"
+    }];
+  }
 
-	setSwitch(value){
-		if(value) {
-			return this.setOn();
-		} else {
-			return this.setOff();
-		}
-	}
-
-    get temperature() {
+  get clim() {
+    var that = this;
+    return {
+      on: function() {
         return new Promise((resolve, reject) => {
-            request(this.baseUrl + "/getTemperature", function(err, response, body) {
-                if (err) return reject(err);
-                return resolve({
-                    temperature: body
-                });
+          request(that.baseUrl + "/on", (err, response, body) => {
+            if (err) return reject(err);
+            that.power = true;
+            return resolve({
+              power: that.power
             });
+
+          });
+        })
+
+      },
+      off: function() {
+        return new Promise((resolve, reject) => {
+          request(that.baseUrl + "/on", (err, response, body) => {
+            if (err) return reject(err);
+            that.power = false;
+            return resolve({
+              power: that.power
+            });
+
+          });
+        })
+
+      },
+      status: this.power
+    }
+  }
+
+  get temperature() {
+    var that = this;
+    return new Promise((resolve, reject) => {
+      request(that.baseUrl + "/getTemperature", function(err, response, body) {
+        if (err) return reject(err);
+        return resolve({
+          temperature: body
         });
-    }
-
-    setOn() {
-        return new Promise((resolve, reject) => {
-            request(this.baseUrl + "/on", (err, response, body) => {
-                if (err) return reject(err);
-		    this.power = true;
-                return resolve({
-                    power: this.power
-                });
-
-            });
-        })
-    }
-
-    setOff() {
-        return new Promise((resolve, reject) => {
-            request(this.baseUrl + "/on", (err, response, body) => {
-                if (err) return reject(err);
-                this.power = false;
-		    return resolve({
-                    power: this.power;
-                });
-
-            });
-        })
-
-    }
-	status() {
-		return new Promise((resolve, reject) => {
-			this.temperature
-				.then(function(temp){
-
-				});	
-		})
-	}
+      });
+    });
+  }
 }
+
