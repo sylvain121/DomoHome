@@ -23,23 +23,22 @@ function toBufferLength(b) {
 }
 
 var sock = null;
-console.log(buffer);
 
 var server = net.createServer(function(socket) {
-  console.log("new client connect");
+  log("new client connect");
   sock = socket;
   socket.on("data", (data) => {
-	  console.log(data);
+	  log(data);
   });
 });
 
 server.listen(10240, () => {
-  console.log("listening on port 10240");
+  log("listening on port 10240");
 });
 
 function sendCommand(command) {
-	return new Promise((resolve, reject){
-	console.log("sending frame");
+	return new Promise((resolve, reject) => {
+	log("sending frame");
 	let data = toBuffer(command);
 	let length = toBufferLength(command);
 	const b = Buffer.concat([MESSAGE_EMIT,buffer_freq, length, data], 10+length); 
@@ -51,11 +50,16 @@ function sendCommand(command) {
 	});
 }
 
-modules.exports = {
+module.exports = {
 	setOn24Hot: function() {
 		return sendCommand(on24hot);
 	},
 	setOff: function() {
 		return sendCommand(off);
 	}
+}
+
+
+function log(message) {
+	console.log("AIRTON : "+message);
 }
