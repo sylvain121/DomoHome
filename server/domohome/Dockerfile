@@ -3,7 +3,7 @@ MAINTAINER 	sylvain121
 
 WORKDIR /root
 RUN	git clone https://github.com/sylvain121/DomoHome.git
-WORKDIR /root/server/domohome
+WORKDIR /root/DomoHome/server/domohome
 RUN     npm i	
 CMD	["npm", "start"]
 

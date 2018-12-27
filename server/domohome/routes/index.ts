@@ -16,7 +16,7 @@ router.get('/heating/:room/off', function(req:any, res:any) {
 router.get('/heating/:room/:temperature', function(req:any, res:any, next:any) {
 	const room = req.query.room; // currently ignoring room 
 	const temp = req.query.temperature;
-	airton.setOn24hot();
+	airton.setOn24Hot();
 });
 
 
