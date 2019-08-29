@@ -14,7 +14,7 @@ const airton =require('./src/AirtonService/AirtonDriver');
  * scheduler
  *
  */
-var test = scheduler.scheduleJob('* 5 * * *', function() {
+var test = scheduler.scheduleJob('0 4 * * *', function() {
   console.log('sending command to airton driver');
 	airton.setOn24Hot();
 });
